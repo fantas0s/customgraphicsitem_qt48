@@ -38,7 +38,10 @@
 **
 ****************************************************************************/
 #include <QtGui>
+#include <QtDeclarative/QDeclarativeExtensionPlugin>
 #include "qmlapplicationviewer.h"
+#include "triangle.h"
+#include "trianglesingleton.h"
 #include <QGraphicsPolygonItem>
 
 Q_DECL_EXPORT int main(int argc, char *argv[])
@@ -47,19 +50,15 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     QScopedPointer<QmlApplicationViewer> viewer(
                 QmlApplicationViewer::create());
 
+    qmlRegisterType<QmlTriangle>("oldquick", 1, 0, "Triangle");
     viewer->setWindowTitle(QString("Customised UI"));
     viewer->setOrientation(QmlApplicationViewer::ScreenOrientationAuto);
     viewer->setSource(QUrl("qrc:/qml/main.qml"));
     viewer->showExpanded();
 
     QGraphicsPolygonItem myPoly(0, viewer->scene());
-    QVector<QPointF> polyPoints;
-    polyPoints.append(QPointF(0,0));
-    polyPoints.append(QPointF(50,50));
-    polyPoints.append(QPointF(0,50));
-    myPoly.setPolygon(QPolygonF(polyPoints));
-    myPoly.setX(20);
-    myPoly.setY(30);
+    TriangleSingleton* polyContainer = TriangleSingleton::getInstance();
+    polyContainer->setPolyItem(&myPoly);
     myPoly.show();
 
     return app->exec();

@@ -39,9 +39,28 @@
 ****************************************************************************/
 
 import QtQuick 1.0
+import oldquick 1.0
 
 Rectangle {
     width: 640
     height: 480
-    color: "red"
+    color: "black"
+    Triangle {
+        id: testTriangle
+        width: 100
+        height: 100
+        x: 10
+        y: 15
+        color: "blue"
+    }
+
+    Timer {
+        interval: 100
+        running: true
+        repeat: true
+        onTriggered: {
+            testTriangle.x += 1;
+            testTriangle.height += 1;
+        }
+    }
 }
