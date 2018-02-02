@@ -1,8 +1,8 @@
 # Add more folders to ship with the application, here
 #folder_01.target = qml
-lessThan(QT_MAJOR_VERSION, 4): error("requires Qt 4")
-lessThan (QT_MINOR_VERSION, 8): error("requires > Qt 4.7.x")
-greaterThan (QT_MINOR_VERSION, 8): error("requires Qt 4.8.x")
+#lessThan(QT_MAJOR_VERSION, 4): error("requires Qt 4")
+#lessThan (QT_MINOR_VERSION, 8): error("requires > Qt 4.7.x")
+#greaterThan (QT_MINOR_VERSION, 8): error("requires Qt 4.8.x")
 message("Qt version:" $${QT_MAJOR_VERSION}.$${QT_MINOR_VERSION}.$${QT_PATCH_VERSION})
 #DEPLOYMENTFOLDERS = folder_01
 

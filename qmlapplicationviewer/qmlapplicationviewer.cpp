@@ -49,7 +49,7 @@
 
 #include <QtCore/QDir>
 #include <QtCore/QFileInfo>
-#include <QtGui/QApplication>
+#include <QApplication>
 #include <QtDeclarative/QDeclarativeComponent>
 #include <QtDeclarative/QDeclarativeEngine>
 #include <QtDeclarative/QDeclarativeContext>
@@ -175,7 +175,7 @@ void QmlApplicationViewer::setOrientation(ScreenOrientation orientation)
         attribute = static_cast<Qt::WidgetAttribute>(130);
         break;
 #else // QT_VERSION < 0x040702
-    case ScreenOrientationLockPortrait:
+/*    case ScreenOrientationLockPortrait:
         attribute = Qt::WA_LockPortraitOrientation;
         break;
     case ScreenOrientationLockLandscape:
@@ -184,7 +184,7 @@ void QmlApplicationViewer::setOrientation(ScreenOrientation orientation)
     default:
     case ScreenOrientationAuto:
         attribute = Qt::WA_AutoOrientation;
-        break;
+        break;*/
 #endif // QT_VERSION < 0x040702
     };
     setAttribute(attribute, true);

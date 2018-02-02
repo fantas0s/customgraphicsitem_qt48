@@ -43,6 +43,7 @@
 #include "triangle.h"
 #include "trianglesingleton.h"
 #include <QGraphicsPolygonItem>
+#include <QApplication>
 
 Q_DECL_EXPORT int main(int argc, char *argv[])
 {
@@ -56,10 +57,10 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     viewer->setSource(QUrl("qrc:/qml/main.qml"));
     viewer->showExpanded();
 
-    QGraphicsPolygonItem myPoly(0, viewer->scene());
+    QGraphicsPolygonItem* myPoly = viewer->scene()->addPolygon(QPolygonF());
     TriangleSingleton* polyContainer = TriangleSingleton::getInstance();
-    polyContainer->setPolyItem(&myPoly);
-    myPoly.show();
+    polyContainer->setPolyItem(myPoly);
+    myPoly->show();
 
     return app->exec();
 }
